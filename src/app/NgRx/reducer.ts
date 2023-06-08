@@ -1,16 +1,27 @@
 import { createReducer, on } from '@ngrx/store';
-import { increment, decrement } from './actions';
+import { countIncrement, countDecrement, updateName, updateState } from './actions';
 
-export interface CounterState {
+export interface GlobalState {
   count: number;
+  name: string;
 }
 
-export const initialState: CounterState = {
+export const initialState: GlobalState = {
   count: 0,
+  name: ''
 };
 
-export const counterReducer = createReducer(
+export const appReducer = createReducer(
   initialState,
-  on(increment, (state) => ({ ...state, count: state.count + 1 })),
-  on(decrement, (state) => ({ ...state, count: state.count - 1 }))
+  on(countIncrement, (state) => ({ ...state, count: state.count + 1 })),
+  on(countDecrement, (state) => ({ ...state, count: state.count - 1 })),
+  on(updateName, (state, { name }) => ({
+    ...state,
+    name
+  })),
+  on(updateState, (state, { count, name }) => ({
+    ...state,
+    count,
+    name
+  }))
 );

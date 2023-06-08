@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { selectCount } from '../NgRx/selectors';
-import { increment, decrement } from '../NgRx/actions';
+import { countIncrement, countDecrement } from '../NgRx/actions';
 
 @Component({
   selector: 'app-counter',
@@ -17,10 +17,10 @@ export class CounterComponent {
   }
 
   onIncrement(): void {
-    this.store.dispatch(increment());
+    this.store.dispatch(countIncrement());
   }
 
   onDecrement(): void {
-    this.store.dispatch(decrement());
+    this.store.dispatch(countDecrement());
   }
 }

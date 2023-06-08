@@ -1,9 +1,17 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { CounterState } from './reducer';
+import { GlobalState } from './reducer';
 
-export const selectCounterState = createFeatureSelector<CounterState>('counter');
+export const selectState = createFeatureSelector<GlobalState>('stateObj');
 
+export const selectFullState = createSelector(
+  selectState,
+  (state: GlobalState) => state
+);
 export const selectCount = createSelector(
-  selectCounterState,
-  (state: CounterState) => state.count
+  selectState,
+  (state: GlobalState) => state.count
+);
+export const selectName = createSelector(
+  selectState,
+  (state: GlobalState) => state.name
 );
