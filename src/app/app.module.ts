@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { StoreModule } from '@ngrx/store';
@@ -19,6 +20,7 @@ import { EditNameComponent } from './edit-name/edit-name.component';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     StoreModule.forRoot({ stateObj: appReducer })
   ],
